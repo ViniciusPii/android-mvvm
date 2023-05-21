@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.mvvm.repositories.MainRepository
 
-class MainViewModelFactory constructor(
+class MainViewModelFactory(
     private val repository: MainRepository
 ) : ViewModelProvider.Factory {
 
@@ -15,5 +15,4 @@ class MainViewModelFactory constructor(
             throw IllegalArgumentException("ViewModel Not Found")
         }
     }
-
 }

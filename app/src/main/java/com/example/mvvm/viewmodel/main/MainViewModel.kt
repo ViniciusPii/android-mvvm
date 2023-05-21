@@ -8,7 +8,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainViewModel constructor(
+class MainViewModel(
     private val repository: MainRepository
 ) : ViewModel() {
     val liveList = MutableLiveData<List<Live>>()
