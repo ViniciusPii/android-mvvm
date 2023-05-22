@@ -12,8 +12,10 @@ interface RetrofitService {
     fun getAllLives(): Call<List<Live>>
 
     companion object {
+        private const val BASE_URL = "https://s3.amazonaws.com/api.ocanha.com/"
+
         private val retrofitService: RetrofitService by lazy {
-            val retrofit = Retrofit.Builder().baseUrl("https://s3.amazonaws.com/api.ocanha.com/")
+            val retrofit = Retrofit.Builder().baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create()).build()
 
             retrofit.create(RetrofitService::class.java)
