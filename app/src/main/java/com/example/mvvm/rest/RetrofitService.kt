@@ -13,16 +13,12 @@ interface RetrofitService {
 
     companion object {
         private val retrofitService: RetrofitService by lazy {
-            val retrofit = Retrofit.Builder()
-                .baseUrl("https://s3.amazonaws.com/api.ocanha.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
+            val retrofit = Retrofit.Builder().baseUrl("https://s3.amazonaws.com/api.ocanha.com/")
+                .addConverterFactory(GsonConverterFactory.create()).build()
 
             retrofit.create(RetrofitService::class.java)
         }
 
-        fun getInstance(): RetrofitService {
-            return retrofitService
-        }
+        fun getInstance(): RetrofitService = retrofitService
     }
 }

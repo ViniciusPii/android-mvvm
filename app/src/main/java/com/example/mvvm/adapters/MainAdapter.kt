@@ -16,13 +16,12 @@ class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
         return MainViewHolder(binding)
     }
 
-    override fun getItemCount(): Int {
-        return lives.size
-    }
+    override fun getItemCount() = lives.size
 
-    override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
+
+    override fun onBindViewHolder(holder: MainViewHolder, position: Int) =
         holder.bind(lives[position])
-    }
+
 
     fun setLiveList(lives: List<Live>) {
         this.lives = lives.toMutableList()
