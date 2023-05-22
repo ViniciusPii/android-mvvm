@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -30,12 +30,21 @@ class MainActivity : AppCompatActivity() {
         )[MainViewModel::class.java]
 
         binding.recycler.adapter = adapter
-
     }
 
     override fun onStart() {
         super.onStart()
 
+        setObserver()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        viewModel.getAllLives()
+    }
+
+    private fun setObserver() {
         viewModel.liveList.observe(this) { lives ->
             Log.i("Log", "onStart  $lives")
             adapter.setLiveList(lives)
@@ -44,11 +53,5 @@ class MainActivity : AppCompatActivity() {
         viewModel.errorMessage.observe(this) { message ->
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        viewModel.getAllLives()
     }
 }
